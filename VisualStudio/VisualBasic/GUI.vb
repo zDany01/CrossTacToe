@@ -45,16 +45,16 @@
             clickCount += 1
 
             For i As Integer = 1 To buttonGrid.Count - 1 Step +3
-                If (buttonGrid.Item(i).Text = "X" AndAlso buttonGrid.Item(i - 1).Text = "X" AndAlso buttonGrid.Item(i + 1).Text = "X") OrElse (buttonGrid.Item(i).Text = "O" AndAlso buttonGrid.Item(i - 1).Text = "O" AndAlso buttonGrid.Item(i + 1).Text = "O") Then FinishGame((buttonGrid.Item(i - 1), buttonGrid.Item(i), buttonGrid.Item(i + 1)))
+                If (buttonGrid.Item(i - 1).Text = "X" AndAlso buttonGrid.Item(i).Text = "X" AndAlso buttonGrid.Item(i + 1).Text = "X") OrElse (buttonGrid.Item(i - 1).Text = "O" AndAlso buttonGrid.Item(i).Text = "O" AndAlso buttonGrid.Item(i + 1).Text = "O") Then FinishGame((buttonGrid.Item(i - 1), buttonGrid.Item(i), buttonGrid.Item(i + 1)))
             Next
             For i As Integer = 3 To 5
-                If (buttonGrid.Item(i).Text = "X" AndAlso buttonGrid.Item(i - 3).Text = "X" AndAlso buttonGrid.Item(i + 3).Text = "X") OrElse (buttonGrid.Item(i).Text = "O" AndAlso buttonGrid.Item(i - 3).Text = "O" AndAlso buttonGrid.Item(i + 3).Text = "O") Then FinishGame((buttonGrid.Item(i - 3), buttonGrid.Item(i), buttonGrid.Item(i + 3)))
+                If (buttonGrid.Item(i - 3).Text = "X" AndAlso buttonGrid.Item(i).Text = "X" AndAlso buttonGrid.Item(i + 3).Text = "X") OrElse (buttonGrid.Item(i - 3).Text = "O" AndAlso buttonGrid.Item(i).Text = "O" AndAlso buttonGrid.Item(i + 3).Text = "O") Then FinishGame((buttonGrid.Item(i - 3), buttonGrid.Item(i), buttonGrid.Item(i + 3)))
             Next
             If (buttonGrid.Item(0).Text = "X" AndAlso buttonGrid.Item(4).Text = "X" AndAlso buttonGrid.Item(8).Text = "X") OrElse (buttonGrid.Item(0).Text = "O" AndAlso buttonGrid.Item(4).Text = "O" AndAlso buttonGrid.Item(8).Text = "O") Then
                 FinishGame((buttonGrid.Item(0), buttonGrid.Item(4), buttonGrid.Item(8)))
             ElseIf (buttonGrid.Item(2).Text = "X" AndAlso buttonGrid.Item(4).Text = "X" AndAlso buttonGrid.Item(6).Text = "X") OrElse (buttonGrid.Item(2).Text = "O" AndAlso buttonGrid.Item(4).Text = "O" AndAlso buttonGrid.Item(6).Text = "O") Then
                 FinishGame((buttonGrid.Item(2), buttonGrid.Item(4), buttonGrid.Item(6)))
-            ElseIf clickCount = 9 AndAlso MsgBox($"Draw", MsgboxStyle.Information + MsgBoxStyle.RetryCancel, APP_NAME) = MsgBoxResult.Retry Then
+            ElseIf clickCount = 9 AndAlso MsgBox("Draw", MsgboxStyle.Information + MsgBoxStyle.RetryCancel, APP_NAME) = MsgBoxResult.Retry Then
                 ResetGame()
             End If
         Else
