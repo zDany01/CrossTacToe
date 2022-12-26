@@ -21,8 +21,8 @@ namespace CSharp
         public GUI()
         {
             InitializeComponent();
-            this.restartToolStripMenuItem.Click += RestartToolStripMenu;
             this.exitToolStripMenuItem.Click += (object sender, EventArgs _) => Application.Exit();
+            this.restartToolStripMenuItem.Click += RestartToolStripMenu;
             this.button1.Click += GameLogic;
             this.button2.Click += GameLogic;
             this.button3.Click += GameLogic;
