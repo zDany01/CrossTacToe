@@ -35,7 +35,7 @@
         Application.Exit()
     End Sub
     Private Sub RestartToolStripMenu(ByVal sender As Object, ByVal e As EventArgs) Handles restartToolStripMenuItem.Click
-        Throw New NotImplementedException()
+        If MsgBox("Are you sure?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, APP_NAME) = MsgBoxResult.Yes Then ResetGame()
     End Sub
     Private Sub GameLogic(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click, button2.Click, button3.Click, button4.Click, button5.Click, button6.Click, button7.Click, button8.Click, button9.Click
         If gameEnded Then Return
@@ -54,11 +54,11 @@
                 FinishGame((buttonGrid.Item(0), buttonGrid.Item(4), buttonGrid.Item(8)))
             ElseIf (buttonGrid.Item(2).Text = "X" AndAlso buttonGrid.Item(4).Text = "X" AndAlso buttonGrid.Item(6).Text = "X") OrElse (buttonGrid.Item(2).Text = "O" AndAlso buttonGrid.Item(4).Text = "O" AndAlso buttonGrid.Item(6).Text = "O") Then
                 FinishGame((buttonGrid.Item(2), buttonGrid.Item(4), buttonGrid.Item(6)))
-            ElseIf clickCount > 9 AndAlso MsgBox($"Draw", MsgBoxStyle.RetryCancel, APP_NAME) = MsgBoxResult.Retry Then
+            ElseIf clickCount = 9 AndAlso MsgBox($"Draw", MsgboxStyle.Information + MsgBoxStyle.RetryCancel, APP_NAME) = MsgBoxResult.Retry Then
                 ResetGame()
             End If
         Else
-            MsgBox("You can't modify already modified panels", MsgBoxStyle.OkOnly, APP_NAME)
+            MsgBox("You can't modify already modified panels", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, APP_NAME)
         End If
     End Sub
 

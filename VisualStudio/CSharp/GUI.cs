@@ -75,7 +75,7 @@ namespace CSharp
                 else if ((buttonGrid[2].Text, buttonGrid[4].Text, buttonGrid[6].Text) == ("X", "X", "X") || (buttonGrid[2].Text, buttonGrid[4].Text, buttonGrid[6].Text) == ("O", "O", "O")) FinishGame((buttonGrid[2], buttonGrid[4], buttonGrid[6]));
                 else if(clickCount == 9 && MessageBox.Show($"Draw", APP_NAME, MessageBoxButtons.RetryCancel, MessageBoxIcon.Information) == DialogResult.Retry) ResetGame();
             }
-            else MessageBox.Show("You can't modify already modified panels", APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("You can't modify already modified panels", APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }
