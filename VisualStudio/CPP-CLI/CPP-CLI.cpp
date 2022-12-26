@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "GUI.h"
+#include "GUI.hpp"
 
 using namespace System;
 using namespace System::Windows::Forms;
