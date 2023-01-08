@@ -37,7 +37,7 @@
     Private Sub RestartToolStripMenu(ByVal sender As Object, ByVal e As EventArgs) Handles restartToolStripMenuItem.Click
         If MsgBox("Are you sure?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, APP_NAME) = MsgBoxResult.Yes Then ResetGame()
     End Sub
-    Private Sub GameLogic(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click, button2.Click, button3.Click, button4.Click, button5.Click, button6.Click, button7.Click, button8.Click, button9.Click
+    Private Sub GameLogic(ByVal sender As Object, ByVal e As EventArgs) 
         If gameEnded Then Return
         Dim currentButton As Button = CType(sender, Button)
         If currentButton.Text = "" Then

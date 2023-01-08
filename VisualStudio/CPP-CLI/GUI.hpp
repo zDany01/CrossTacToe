@@ -13,6 +13,15 @@ namespace CPP_CLI {
 	{
 	private: int clickCount = 0;
 	private: bool gameEnded = false;
+	private: System::Windows::Forms::Button^ button9;
+	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::Button^ button7;
+	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button1;
 	private: List<Button^>^ buttonGrid;
 
 	public: GUI(void)
@@ -95,15 +104,15 @@ namespace CPP_CLI {
 	}
 
 
-	private: System::Windows::Forms::Button^ button9;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button7;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button1;
+
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::ContextMenuStrip^ ContextMenu;
 	private: System::Windows::Forms::ToolStripMenuItem^ restartToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ exitToolStripMenuItem;
@@ -116,6 +125,9 @@ namespace CPP_CLI {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
+			   this->ContextMenu = (gcnew System::Windows::Forms::ContextMenuStrip());
+			   this->restartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			   this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->button9 = (gcnew System::Windows::Forms::Button());
 			   this->button8 = (gcnew System::Windows::Forms::Button());
 			   this->button7 = (gcnew System::Windows::Forms::Button());
@@ -125,11 +137,29 @@ namespace CPP_CLI {
 			   this->button3 = (gcnew System::Windows::Forms::Button());
 			   this->button2 = (gcnew System::Windows::Forms::Button());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
-			   this->ContextMenu = (gcnew System::Windows::Forms::ContextMenuStrip());
-			   this->restartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			   this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->ContextMenu->SuspendLayout();
 			   this->SuspendLayout();
+			   // 
+			   // ContextMenu
+			   // 
+			   this->ContextMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				   this->restartToolStripMenuItem,
+					   this->exitToolStripMenuItem
+			   });
+			   this->ContextMenu->Name = L"ContextMenu";
+			   this->ContextMenu->Size = System::Drawing::Size(111, 48);
+			   // 
+			   // restartToolStripMenuItem
+			   // 
+			   this->restartToolStripMenuItem->Name = L"restartToolStripMenuItem";
+			   this->restartToolStripMenuItem->Size = System::Drawing::Size(110, 22);
+			   this->restartToolStripMenuItem->Text = L"Restart";
+			   // 
+			   // exitToolStripMenuItem
+			   // 
+			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
+			   this->exitToolStripMenuItem->Size = System::Drawing::Size(110, 22);
+			   this->exitToolStripMenuItem->Text = L"Exit";
 			   // 
 			   // button9
 			   // 
@@ -145,7 +175,7 @@ namespace CPP_CLI {
 			   // 
 			   this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->button8->Location = System::Drawing::Point(71, 100);
+			   this->button8->Location = System::Drawing::Point(72, 100);
 			   this->button8->Name = L"button8";
 			   this->button8->Size = System::Drawing::Size(42, 38);
 			   this->button8->TabIndex = 16;
@@ -175,7 +205,7 @@ namespace CPP_CLI {
 			   // 
 			   this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->button5->Location = System::Drawing::Point(71, 56);
+			   this->button5->Location = System::Drawing::Point(72, 56);
 			   this->button5->Name = L"button5";
 			   this->button5->Size = System::Drawing::Size(42, 38);
 			   this->button5->TabIndex = 13;
@@ -205,7 +235,7 @@ namespace CPP_CLI {
 			   // 
 			   this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->button2->Location = System::Drawing::Point(71, 12);
+			   this->button2->Location = System::Drawing::Point(72, 12);
 			   this->button2->Name = L"button2";
 			   this->button2->Size = System::Drawing::Size(42, 38);
 			   this->button2->TabIndex = 10;
@@ -221,32 +251,11 @@ namespace CPP_CLI {
 			   this->button1->TabIndex = 9;
 			   this->button1->UseVisualStyleBackColor = true;
 			   // 
-			   // ContextMenu
-			   // 
-			   this->ContextMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				   this->restartToolStripMenuItem,
-					   this->exitToolStripMenuItem
-			   });
-			   this->ContextMenu->Name = L"ContextMenu";
-			   this->ContextMenu->Size = System::Drawing::Size(111, 48);
-			   // 
-			   // restartToolStripMenuItem
-			   // 
-			   this->restartToolStripMenuItem->Name = L"restartToolStripMenuItem";
-			   this->restartToolStripMenuItem->Size = System::Drawing::Size(110, 22);
-			   this->restartToolStripMenuItem->Text = L"Restart";
-			   // 
-			   // exitToolStripMenuItem
-			   // 
-			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
-			   this->exitToolStripMenuItem->Size = System::Drawing::Size(110, 22);
-			   this->exitToolStripMenuItem->Text = L"Exit";
-			   // 
 			   // GUI
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(186, 151);
+			   this->ClientSize = System::Drawing::Size(186, 150);
 			   this->ContextMenuStrip = this->ContextMenu;
 			   this->Controls->Add(this->button9);
 			   this->Controls->Add(this->button8);
