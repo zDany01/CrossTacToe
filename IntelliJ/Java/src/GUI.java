@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 public class GUI extends JDialog implements MouseListener, ActionListener {
-    private final Dimension defaultButtonSize = new Dimension(40,34);
+    private final Dimension defaultButtonSize = new Dimension(40,36);
     private List<JButton> buttonGrid = new ArrayList();
     public GUI(){
         InitializeComponent();
@@ -60,6 +60,7 @@ public class GUI extends JDialog implements MouseListener, ActionListener {
         for(int i = 0; i < buttonGrid.size(); i++){
             buttonGrid.set(i, new JButton());
             buttonGrid.get(i).setPreferredSize(defaultButtonSize);
+            buttonGrid.get(i).setBackground(Color.white);
             this.getContentPane().add(buttonGrid.get(i));
             if(i == 2 || i == 5) this.getContentPane().add(Box.createRigidArea(new Dimension(this.getWidth(),8)));
         }
