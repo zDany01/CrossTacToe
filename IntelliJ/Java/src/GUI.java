@@ -11,14 +11,17 @@ public class GUI extends JDialog implements ActionListener {
         InitializeComponent();
     }
 
-    //Events
+
+
+
+
+    //<editor-fold desc="Events">
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == exitMenuItem) this.dispose();
     }
-
-
-    //Graphics
+    //</editor-fold>
+    //<editor-fold desc="Graphics">
     private JButton button1, button2, button3, button4, button5, button6, button7, button8, button9;
     private JPopupMenu contextMenu;
     private JMenuItem restartMenuItem, exitMenuItem;
@@ -27,6 +30,7 @@ public class GUI extends JDialog implements ActionListener {
         this.setSize(202,189);
         this.setResizable(false);
         this.setTitle("TicTacToe");
+        this.setLocationRelativeTo(null); //Start at CenterScreen
         JPanel mainPanel = new JPanel();
         mainPanel.setSize(this.getSize());
         this.add(mainPanel);
@@ -35,7 +39,6 @@ public class GUI extends JDialog implements ActionListener {
         mainPanel.add(Box.createRigidArea(new Dimension(this.getWidth(),13)));
         contextMenu = new JPopupMenu();
         mainPanel.setComponentPopupMenu(contextMenu);
-
         buttonGrid.add(button1);
         buttonGrid.add(button2);
         buttonGrid.add(button3);
@@ -60,4 +63,5 @@ public class GUI extends JDialog implements ActionListener {
         contextMenu.add(restartMenuItem);
         contextMenu.add(exitMenuItem);
     }
+    //</editor-fold>
 }
