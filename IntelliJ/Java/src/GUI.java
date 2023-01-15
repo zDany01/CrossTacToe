@@ -13,7 +13,7 @@ public class GUI extends JDialog implements ActionListener {
     private final String APP_NAME = "Tic Tac Toe";
     private int clickCount = 0;
     private boolean gameEnded = false;
-    private List<JButton> buttonGrid = new ArrayList();
+    private List<JButton> buttonGrid = new ArrayList(9);
     public GUI(){
         InitializeComponent();
     }
