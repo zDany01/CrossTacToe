@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GUI extends JDialog implements ActionListener {
     private final Dimension DEFAULT_BUTTON_SIZE = new Dimension(40,36);
@@ -13,16 +11,16 @@ public class GUI extends JDialog implements ActionListener {
     private final String APP_NAME = "Tic Tac Toe";
     private int clickCount = 0;
     private boolean gameEnded = false;
-    private List<JButton> buttonGrid = new ArrayList(9);
+    private JButton[] buttonGrid = new JButton[9];
     public GUI(){
         InitializeComponent();
     }
 
 
     private void ResetGame(){
-        for(JButton button : buttonGrid){
-            button.setText("");
-            button.setForeground(null);
+        for(int i = 0; i < buttonGrid.length; i++){
+            buttonGrid[i].setText("");
+            buttonGrid[i].setForeground(null);
         }
         gameEnded = false;
         clickCount = 0;
@@ -38,10 +36,10 @@ public class GUI extends JDialog implements ActionListener {
         if (gameEnded) return;
         if(currentButton.getText().equals("")){
             currentButton.setText(clickCount++ % 2 == 0 ? "X" : "O");
-            for(int i = 1; i < buttonGrid.size(); i+= 3) if ((buttonGrid.get(i-1).getText().equals("X") && buttonGrid.get(i).getText().equals("X") && buttonGrid.get(i+1).getText().equals("X")) || (buttonGrid.get(i-1).getText().equals("O") && buttonGrid.get(i).getText().equals("O") && buttonGrid.get(i+1).getText().equals("O"))) FinishGame(buttonGrid.get(i-1), buttonGrid.get(i), buttonGrid.get(i+1));
-            for(int i = 3; i < 6; i++) if ((buttonGrid.get(i-3).getText().equals("X") && buttonGrid.get(i).getText().equals("X") && buttonGrid.get(i+3).getText().equals("X")) || (buttonGrid.get(i-3).getText().equals("O") && buttonGrid.get(i).getText().equals("O") && buttonGrid.get(i+3).getText().equals("O"))) FinishGame(buttonGrid.get(i-3), buttonGrid.get(i), buttonGrid.get(i+3));
-            if ((buttonGrid.get(0).getText().equals("X") && buttonGrid.get(4).getText().equals("X") && buttonGrid.get(8).getText().equals("X")) || (buttonGrid.get(0).getText().equals("O") && buttonGrid.get(4).getText().equals("O") && buttonGrid.get(8).getText().equals("O"))) FinishGame(buttonGrid.get(0), buttonGrid.get(4), buttonGrid.get(8));
-            else if ((buttonGrid.get(2).getText().equals("X") && buttonGrid.get(4).getText().equals("X") && buttonGrid.get(6).getText().equals("X")) || (buttonGrid.get(2).getText().equals("O") && buttonGrid.get(4).getText().equals("O") && buttonGrid.get(6).getText().equals("O"))) FinishGame(buttonGrid.get(2), buttonGrid.get(4), buttonGrid.get(6));
+            for(int i = 1; i < buttonGrid.length; i+= 3) if ((buttonGrid[i-1].getText().equals("X") && buttonGrid[i].getText().equals("X") && buttonGrid[i+1].getText().equals("X")) || (buttonGrid[i-1].getText().equals("O") && buttonGrid[i].getText().equals("O") && buttonGrid[i+1].getText().equals("O"))) FinishGame(buttonGrid[i-1], buttonGrid[i], buttonGrid[i+1]);
+            for(int i = 3; i < 6; i++) if ((buttonGrid[i-3].getText().equals("X") && buttonGrid[i].getText().equals("X") && buttonGrid[i+3].getText().equals("X")) || (buttonGrid[i-3].getText().equals("O") && buttonGrid[i].getText().equals("O") && buttonGrid[i+3].getText().equals("O"))) FinishGame(buttonGrid[i-3], buttonGrid[i], buttonGrid[i+3]);
+            if ((buttonGrid[0].getText().equals("X") && buttonGrid[4].getText().equals("X") && buttonGrid[8].getText().equals("X")) || (buttonGrid[0].getText().equals("O") && buttonGrid[4].getText().equals("O") && buttonGrid[8].getText().equals("O"))) FinishGame(buttonGrid[0], buttonGrid[4], buttonGrid[8]);
+            else if ((buttonGrid[2].getText().equals("X") && buttonGrid[4].getText().equals("X") && buttonGrid[6].getText().equals("X")) || (buttonGrid[2].getText().equals("O") && buttonGrid[4].getText().equals("O") && buttonGrid[6].getText().equals("O"))) FinishGame(buttonGrid[2], buttonGrid[4], buttonGrid[6]);
             else if (clickCount == 9 && JOptionPane.showOptionDialog(this, "Draw", APP_NAME, JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, RETRY_ABORT, 0) == 0) ResetGame();
         } else JOptionPane.showConfirmDialog(this, "You can't modify already modified panels", APP_NAME, JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
     }
@@ -82,7 +80,7 @@ public class GUI extends JDialog implements ActionListener {
             button.addActionListener(this);
             button.setFont(SANS_SERIF_BOLD);
             button.setMargin(new Insets(0, 0, 0, 0));
-            buttonGrid.add(button);
+            buttonGrid[i] = button;
             mainPanel.add(button);
             if(i == 2 || i == 5) mainPanel.add(Box.createRigidArea(DEFAULT_DIVIDER_SIZE));
         }
