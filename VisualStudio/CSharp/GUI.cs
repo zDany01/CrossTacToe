@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CSharp
 {
     public partial class GUI : Form
     {
-        const string APP_NAME = "Tic Tac Toe";
+        private const string APP_NAME = "Tic Tac Toe";
         private int clickCount = 0;
         private bool gameEnded = false;
-        private List<Button> buttonGrid;
+        private Button[] buttonGrid;
 
         public GUI()
         {
@@ -37,13 +30,13 @@ namespace CSharp
 
         private void GUI_Load(object sender, EventArgs e)
         {
-            buttonGrid = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+            buttonGrid = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
         }
         private void ResetGame()
         {
             foreach (Button button in buttonGrid)
             {
-                button.Text = "";
+                button.ResetText();
                 button.ForeColor = Button.DefaultForeColor;
             }
             gameEnded = false;
@@ -65,11 +58,11 @@ namespace CSharp
         {
             if (gameEnded) return;
             Button currentButton = (Button)sender;
-            if (currentButton.Text == "")
+            if (currentButton.Text == string.Empty)
             {
                 currentButton.Text = clickCount++ % 2 == 0 ? "X" : "O";
 
-                for (int i = 1; i < buttonGrid.Count; i += 3) if ((buttonGrid[i - 1].Text, buttonGrid[i].Text, buttonGrid[i + 1].Text) == ("X", "X", "X") || (buttonGrid[i - 1].Text, buttonGrid[i].Text, buttonGrid[i + 1].Text) == ("O", "O", "O")) FinishGame((buttonGrid[i - 1], buttonGrid[i], buttonGrid[i + 1]));
+                for (int i = 1; i < buttonGrid.Length; i += 3) if ((buttonGrid[i - 1].Text, buttonGrid[i].Text, buttonGrid[i + 1].Text) == ("X", "X", "X") || (buttonGrid[i - 1].Text, buttonGrid[i].Text, buttonGrid[i + 1].Text) == ("O", "O", "O")) FinishGame((buttonGrid[i - 1], buttonGrid[i], buttonGrid[i + 1]));
                 for (int i = 3; i < 6; i++) if ((buttonGrid[i - 3].Text, buttonGrid[i].Text, buttonGrid[i + 3].Text) == ("X", "X", "X") || (buttonGrid[i - 3].Text, buttonGrid[i].Text, buttonGrid[i + 3].Text) == ("O", "O", "O")) FinishGame((buttonGrid[i - 3], buttonGrid[i], buttonGrid[i + 3]));
                 if ((buttonGrid[0].Text, buttonGrid[4].Text, buttonGrid[8].Text) == ("X", "X", "X") || (buttonGrid[0].Text, buttonGrid[4].Text, buttonGrid[8].Text) == ("O", "O", "O")) FinishGame((buttonGrid[0], buttonGrid[4], buttonGrid[8]));
                 else if ((buttonGrid[2].Text, buttonGrid[4].Text, buttonGrid[6].Text) == ("X", "X", "X") || (buttonGrid[2].Text, buttonGrid[4].Text, buttonGrid[6].Text) == ("O", "O", "O")) FinishGame((buttonGrid[2], buttonGrid[4], buttonGrid[6]));
