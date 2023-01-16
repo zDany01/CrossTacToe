@@ -2,12 +2,9 @@
 #define APP_NAME "Tic Tac Toe"
 namespace CPP_CLI {
 	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Collections::Generic;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Windows::Forms;
+	using namespace System::Collections::Generic;
 
 	public ref class GUI : public System::Windows::Forms::Form
 	{
@@ -56,7 +53,7 @@ namespace CPP_CLI {
 	private: System::Void ResetGame() {
 		for each (Button ^ button in buttonGrid)
 		{
-			button->Text = "";
+			button->ResetText();
 			button->ForeColor = Control::DefaultForeColor;
 		}
 		gameEnded = false;
@@ -75,21 +72,16 @@ namespace CPP_CLI {
 	private: System::Void RestartToolStripMenu(Object^ sender, EventArgs^ e) {
 		if (MessageBox::Show("Are you sure?", APP_NAME, MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) ResetGame();
 	}
-	private: bool CheckForAllValues(String^ item1, String^ item2, String^ item3, String^ value) {
-		return item1 == value && item2 == value && item3 == value;
-	}
 	private: System::Void GameLogic(Object^ sender, EventArgs^ e) {
 		if (gameEnded) return;
 		Button^ currentButton = (Button^)sender;
-		if (currentButton->Text == "") {
+		if (currentButton->Text == System::String::Empty) {
 			currentButton->Text = clickCount++ % 2 == 0 ? "X" : "O";
 
-			for (int i = 1; i < buttonGrid->Count; i += 3)
-				if (CheckForAllValues(buttonGrid[i - 1]->Text, buttonGrid[i]->Text, buttonGrid[i + 1]->Text, "X") || CheckForAllValues(buttonGrid[i - 1]->Text, buttonGrid[i]->Text, buttonGrid[i + 1]->Text, "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[i - 1], buttonGrid[i], buttonGrid[i + 1]));
-			for (int i = 3; i < 6; i++)
-				if (CheckForAllValues(buttonGrid[i - 3]->Text, buttonGrid[i]->Text, buttonGrid[i + 3]->Text, "X") || CheckForAllValues(buttonGrid[i - 3]->Text, buttonGrid[i]->Text, buttonGrid[i + 3]->Text,"O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[i - 3], buttonGrid[i], buttonGrid[i + 3]));
-			if (CheckForAllValues(buttonGrid[0]->Text, buttonGrid[4]->Text, buttonGrid[8]->Text, "X") || CheckForAllValues(buttonGrid[0]->Text, buttonGrid[4]->Text, buttonGrid[8]->Text, "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[0], buttonGrid[4], buttonGrid[8]));
-			else if (CheckForAllValues(buttonGrid[2]->Text, buttonGrid[4]->Text, buttonGrid[6]->Text, "X") || CheckForAllValues(buttonGrid[2]->Text, buttonGrid[4]->Text, buttonGrid[6]->Text, "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[2], buttonGrid[4], buttonGrid[6]));
+			for (int i = 1; i < buttonGrid->Count; i += 3) if (buttonGrid[i - 1]->Text == "X" && buttonGrid[i]->Text == "X" && buttonGrid[i + 1]->Text == "X" || (buttonGrid[i - 1]->Text == "O" && buttonGrid[i]->Text == "O" && buttonGrid[i + 1]->Text == "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[i - 1], buttonGrid[i], buttonGrid[i + 1]));
+			for (int i = 3; i < 6; i++) if ((buttonGrid[i - 3]->Text == "X" && buttonGrid[i]->Text == "X" && buttonGrid[i + 3]->Text == "X") || (buttonGrid[i - 3]->Text == "O" && buttonGrid[i]->Text == "O" && buttonGrid[i + 3]->Text == "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[i - 3], buttonGrid[i], buttonGrid[i + 3]));
+			if ((buttonGrid[0]->Text == "X" &&  buttonGrid[4]->Text == "X" && buttonGrid[8]->Text == "X") || (buttonGrid[0]->Text == "O" && buttonGrid[4]->Text == "O" && buttonGrid[8]->Text == "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[0], buttonGrid[4], buttonGrid[8]));
+			else if ((buttonGrid[2]->Text == "X" && buttonGrid[4]->Text == "X" && buttonGrid[6]->Text == "X") || (buttonGrid[2]->Text == "O" && buttonGrid[4]->Text == "O" && buttonGrid[6]->Text == "O")) FinishGame(gcnew ValueTuple<Button^, Button^, Button^>(buttonGrid[2], buttonGrid[4], buttonGrid[6]));
 			else if (clickCount == 9 && MessageBox::Show("Draw", APP_NAME, MessageBoxButtons::RetryCancel, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::Retry) ResetGame();
 		}
 		else MessageBox::Show("You can't modify already modified panels", APP_NAME, MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
