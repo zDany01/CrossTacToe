@@ -63,6 +63,7 @@ public class GUI extends JDialog implements ActionListener {
         this.setSize(202,189);
         this.setResizable(false);
         this.setTitle("TicTacToe");
+        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
         this.setLocationRelativeTo(null); //Start at CenterScreen
         JPanel mainPanel = new JPanel();
         mainPanel.setSize(this.getSize());

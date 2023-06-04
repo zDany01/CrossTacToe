@@ -22,8 +22,8 @@ Partial Class GUI
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.ContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GUI))
+        Me.ContextMenu = New System.Windows.Forms.ContextMenuStrip()
         Me.restartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.exitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.button9 = New System.Windows.Forms.Button()
@@ -153,6 +153,7 @@ Partial Class GUI
         Me.Controls.Add(Me.button2)
         Me.Controls.Add(Me.button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "GUI"

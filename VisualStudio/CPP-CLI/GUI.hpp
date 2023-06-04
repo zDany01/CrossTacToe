@@ -117,6 +117,7 @@ namespace CPP_CLI {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GUI::typeid));
 			   this->ContextMenu = (gcnew System::Windows::Forms::ContextMenuStrip());
 			   this->restartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -259,6 +260,7 @@ namespace CPP_CLI {
 			   this->Controls->Add(this->button2);
 			   this->Controls->Add(this->button1);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			   this->MaximizeBox = false;
 			   this->MinimizeBox = false;
 			   this->Name = L"GUI";
